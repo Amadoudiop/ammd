@@ -89,8 +89,8 @@
 		</div>
 		<div class="footer-bar">
 			<div class="container">
-                {% if options['copyright'] is defined %}
-                	<h5>{{ options['copyright'] }}</h5>
+				{% if options.copyright is not null %}  
+                	<h5>{{ options.copyright }}</h5>
                 {% endif %}
 			</div>
 		</div>
