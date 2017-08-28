@@ -10,6 +10,6 @@ Configure the parameters in app/config/parameters.yml
 
 Database
 
-# php bin/console doctrine:schema:update
+# php bin/console doctrine:schema:update --force
 
 
