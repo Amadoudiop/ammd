@@ -2,18 +2,19 @@ AMMD
 =====
 A Symfony project created on May 4, 2017, 11:49 pm.
 
-To install the project
+# Install the project
 
 ```
 composer install
 ```
+# Config
 
 Configure the parameters in app/config/parameters.yml
 
 Database
 
 ```
-# php bin/console doctrine:schema:update --force
+php bin/console doctrine:schema:update --force
 ```
 
 
