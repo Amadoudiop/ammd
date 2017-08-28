@@ -1,0 +1,64 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}{{ parent() }} Option list{% endblock %}
+
+{% block body %}
+    <!-- header Mission -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body app-heading">
+                    <img class="profile-img" src="http://placehold.it/150x150">
+                    <div class="app-title">
+                        <div class="title"><span class="highlight">Option list</span></div>
+                        <div class="description">Configure your options</div>
+                    </div>
+                    <a href="{{ path('option_new') }}">
+                        <button type="button" class="btn btn-success">Add a new Option</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="card">
+            <div class="card-header">
+              List of options
+            </div>
+            <div class="card-body no-padding">
+              <table class="datatable table table-striped primary" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>email</th>
+                        <th>adresse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for option in options %}
+                        <tr>
+                            <td>{{ option.email }}</td>
+                            <td>{{ option.address }}</td>
+                            <td>{{ option.phone }}</td>
+                            <td>{{ option.facebook }}</td>
+                            <td>{{ option.copyright }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('option_edit', { 'id': option.id }) }}"><button type="button" class="btn btn-warning">modifier</button></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

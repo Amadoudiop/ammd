@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>{% block title %}AMMD | Administration{% endblock %}</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/flat-admin.css') }}">
+
+		<!-- Theme -->
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/theme/blue-sky.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/theme/blue.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/theme/red.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/theme/yellow.css') }}">
+		<!-- Tinymce -->
+		<script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
+		<script>tinymce.init({ selector:'textarea' });</script>
+
+		{% block stylesheets %}{% endblock %}
+	</head>
+	<body>
+		<div class="app app-default">	
+			<aside class="app-sidebar" id="sidebar">
+			  <div class="sidebar-header">
+			    <a class="sidebar-brand" href="#"><span class="highlight">AMMD</span> Admin</a>
+			    <button type="button" class="sidebar-toggle">
+			      <i class="fa fa-times"></i>
+			    </button>
+			  </div>
+			  <div class="sidebar-menu">
+			    <ul class="sidebar-nav">
+			      <li class="">
+					<a class="" href="{{ path('homepage') }}" target="blank">
+			          <div class="title">Accueil</div>
+			        </a>
+			      </li>
+			      <li class="">
+			        <a href="{{ path('dashboard') }}">
+			          <div class="icon">
+			            <i class="fa fa-tasks" aria-hidden="true"></i>
+			          </div>
+			          <div class="title">Dashboard</div>
+			        </a>
+			      </li>
+			      <li class="">
+			        <a href="{{ path('page_index') }}">
+			          <div class="icon">
+			            <i class="fa fa-file-o" aria-hidden="true"></i>
+			          </div>
+			          <div class="title">Pages</div>
+			        </a>
+			      </li>
+			      <li class="">
+			        <a href="{{ path('action_index') }}">
+			          <div class="icon">
+			            <i class="fa fa-file-o" aria-hidden="true"></i>
+			          </div>
+			          <div class="title">Actions</div>
+			        </a>
+			      </li>
+			      <li class="">
+			        <a href="{{ path('mission_index') }}">
+			          <div class="icon">
+			            <i class="fa fa-file-o" aria-hidden="true"></i>
+			          </div>
+			          <div class="title">Missions</div>
+			        </a>
+			      </li>
+			      <li class="">
+			        <a href="{{ path('team_index') }}">
+			          <div class="icon">
+			            <i class="fa fa-file-o" aria-hidden="true"></i>
+			          </div>
+			          <div class="title">Teams</div>
+			        </a>
+			      </li>
+			      <li class="">
+			        <a href="{{ path('slide_index') }}">
+			          <div class="icon">
+			            <i class="fa fa-file-o" aria-hidden="true"></i>
+			          </div>
+			          <div class="title">Slider</div>
+			        </a>
+			      </li>
+			      <li class="">
+			        <a href="{{ path('option_edit', { 'id': 6 }) }}">
+			          <div class="icon">
+			            <i class="fa fa-cogs" aria-hidden="true"></i>
+			          </div>
+			          <div class="title">Options</div>
+			        </a>
+			      </li>
+			    </ul>
+			  </div>
+			</aside>
+
+			<div class="app-container">
+
+            	{% block body %}{% endblock %}
+            </div>
+
+
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+			<script type="text/javascript" src="{{ asset('js/creemson.js') }}"></script>
+
+			<script type="text/javascript" src="{ asset('js/vendor.js') }}"></script>
+			<script type="text/javascript" src="{ asset('assets/js/app.js') }}"></script>
+			{% block javascripts %}{% endblock %}
+
+		</div>
+	</body>
+</html>

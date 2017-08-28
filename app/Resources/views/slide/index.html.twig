@@ -1,0 +1,60 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}{{ parent() }}Slider{% endblock %}
+
+{% block body %}
+    <!-- header Slide -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body app-heading">
+                    <img class="profile-img" src="http://placehold.it/150x150">
+                    <div class="app-title">
+                        <div class="title"><span class="highlight">Slider</span></div>
+                        <div class="description">Configure your slides</div>
+                    </div>
+                    <a href="{{ path('slide_new') }}">
+                        <button type="button" class="btn btn-success">Add a new Slide</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="card">
+            <div class="card-header">
+              List of slides
+            </div>
+            <div class="card-body no-padding">
+              <table class="datatable table table-striped primary" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for slide in slides %}
+                        <tr>
+                            <td>{{ slide.title }}</td>
+                            <td><img style="height: 200px;" src="{{ absolute_url(simple_directory) }}{{ slide.media.thumb }}"></td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('slide_edit', { 'id': slide.id }) }}"><button type="button" class="btn btn-warning">edit</button></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

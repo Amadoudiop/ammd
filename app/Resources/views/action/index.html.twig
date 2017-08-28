@@ -1,0 +1,66 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}{{ parent() }}Actions{% endblock %}
+
+{% block body %}
+    <!-- header Action -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body app-heading">
+                    <img class="profile-img" src="http://placehold.it/150x150">
+                    <div class="app-title">
+                        <div class="title"><span class="highlight">Actions</span></div>
+                        <div class="description">Configure your action</div>
+                    </div>
+                    <a href="{{ path('action_new') }}">
+                        <button type="button" class="btn btn-success">Add a new Action</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="card">
+            <div class="card-header">
+              List of action
+            </div>
+            <div class="card-body no-padding">
+              <table class="datatable table table-striped primary" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Createdat</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for action in actions %}
+                        <tr>
+                            <td>{{ action.title }}</td>
+                            <td><img style="height: 200px;" src="{{ absolute_url(simple_directory) }}{{ action.media.thumb }}"></td>
+                            <td>{% if action.createdAt %}{{ action.createdAt|date('Y-m-d') }}{% endif %}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('action_show', { 'link': action.link }) }}" target="blank">
+                                        <button type="button" class="btn btn-primary" target="blank">show</button></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('action_edit', { 'link': action.link }) }}"><button type="button" class="btn btn-warning">edit</button></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

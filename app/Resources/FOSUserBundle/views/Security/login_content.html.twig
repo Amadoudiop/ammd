@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">
+        <i class="fa fa-user" aria-hidden="true"></i></span>
+      <input type="text"  id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="{{ 'security.login.username'|trans }}" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon2">
+        <i class="fa fa-key" aria-hidden="true"></i></span>
+      <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans }}" aria-describedby="basic-addon2">
+    </div>
+
+    <div class="input-group">
+   	  <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+      <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+    </div>
+
+    <div class="text-center">
+      <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-success btn-submit">
+    </div>
+</form>

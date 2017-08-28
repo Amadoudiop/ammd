@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<!-- Banner -->
+	<div class="page-banner">
+		<div class="container">
+			<div class="parallax-mask"></div>
+			<div class="section-name">
+				<h2>Nos actions</h2>
+				<div class="short-text">
+					<h5>Accueil<i class="fa fa-angle-double-right"></i>Liste des actions</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="grid-cause-area list-cause-area">
+		<div class="container">
+	        {% for action in actions %}
+				<div class="row">
+					<div class="cause content-box">
+						<div class="col-md-5 col-sm-6">
+							<div class="img-wrapper">
+								<div class="overlay">
+								</div>
+	                            {% if action.media is not null %}
+	                             	<img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ action.media.thumb }}" alt="{{ action.media.alt }}">
+	                            {% endif %}
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-6">
+							<div class="info-block">
+								<h4><a href="{{ path('action_show', { 'link': action.link }) }}">{{ action.title }}</a></h4>
+								<p>{{ action.body|slice(0, 200) }}</p>
+
+								<div class="donet_btn">
+									<a href="{{ path('action_show', { 'link': action.link }) }}" class="btn btn-min btn-solid"><i class="fa fa-archive"></i><span>Lire plus</span></a>						
+								</div>								
+							</div>								
+						</div>
+					</div>
+				</div>
+	        {% endfor %}
+
+
+
+			<div class="pagination-wrapper">
+				<ul class="pagination">
+					{% if (pagination - 2) >= 0 %}
+						<li>
+							<a href="{{ path('actions') }}">
+								<i class="fa fa-angle-double-left"></i>
+							</a>
+						</li>	
+					{% endif %}
+
+					{% if (pagination - 1) >= 0 %}
+						<li>
+							<a href="{{ path('actions') }}?page={{ pagination - 1 }}">
+								{{ pagination }}
+							</a>
+						</li>
+					{% endif %}
+
+					{% if pagination != 0 %}
+						<li>
+							<a href="{{ path('actions') }}?page={{ pagination }}" class="active">
+								{{ pagination + 1 }}
+							</a>
+						</li>
+					{% endif %}
+
+					{% if (pagination + 1) < (totalPages - 1) %}
+							<li>
+								<a href="{{ path('actions') }}?page={{ pagination + 1 }}">
+									{{ pagination + 2 }}
+								</a>
+							</li>
+					{% elseif (pagination + 1) == (totalPages - 1) %}
+							<li>
+								<a href="{{ path('actions') }}?page={{ pagination + 1 }}">
+									{{ pagination + 2 }}
+								</a>
+							</li>
+					{% endif %}
+
+					{% if (pagination + 2) < (totalPages - 1) %}
+						<li>
+							<span>...</span>
+						</li>
+					{% endif %}
+
+					{% if (pagination + 2) <= (totalPages - 1) %}
+						<li>
+							<a href="{{ path('actions') }}?page={{ totalPages -1 }}">
+								{{ totalPages }}
+								<i class="fa fa-angle-double-right"></i>
+							</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+
+
+		  </div>
+    </div>
+{% endblock %}

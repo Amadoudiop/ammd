@@ -1,0 +1,25 @@
+img {
+	max-width: 100%;
+}
+
+.volunteers-wrapper .images-outer .images-inner .nivo-trigger,
+.volunteers-wrapper .images-outer .images-inner{
+	width: 100%;
+}
+.button-center{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.no-padding{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.no-padding img{
+	width: 100%;
+}
+
+.donet_btn {
+    margin-top: 10px;
+}

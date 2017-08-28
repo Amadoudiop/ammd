@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}AMMD | Association Aides AUX Malades Mentaux Demunis{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/creemson.css') }}">
+
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="{{ asset('js/modernizr.js') }}"></script>
+    {% block stylesheets %}{% endblock %}
+  </head>
+    <body>
+
+
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">MENU</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{{ path('homepage') }}">AMMD.</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-right">
+              <ul class="nav navbar-nav">
+                <li><a href="{{ path('homepage') }}#twrap">NOS MISSIONS</a></li>
+                <li><a href="{{ path('homepage') }}#portfoliowrap">NOS ACTIONS</a></li>
+                <li><a href="{{ path('homepage') }}#our-team">NOTRE EQUIPE</a></li>
+                <li><a href="{{ path('homepage') }}#contact">NOUS CONTACTER</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+        {% block body %}{% endblock %}
+
+        {{ render(controller("AppBundle:Option:footer")) }}
+
+        {% block javascripts %}{% endblock %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>   
+        <!-- JS ROUTING -->
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <!-- CUSTOM -->
+        <script src="{{ asset('js/custom.js') }}"></script>
+    </body>
+</html>

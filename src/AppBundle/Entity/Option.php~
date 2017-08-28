@@ -1,0 +1,224 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Option
+ *
+ * @ORM\Table(name="option")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SimpleRepository")
+ */
+class Option
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=125)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=255)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=255)
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="copyright", type="string", length=255)
+     */
+    private $copyright;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Media", cascade={"persist"})
+     */
+    private $logo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Media", cascade={"persist"})
+     */
+    private $favicon;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Option
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return Option
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return Option
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set facebook
+     *
+     * @param string $facebook
+     *
+     * @return Option
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    /**
+     * Get facebook
+     *
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * Set copyright
+     *
+     * @param string $copyright
+     *
+     * @return Option
+     */
+    public function setCopyright($copyright)
+    {
+        $this->copyright = $copyright;
+
+        return $this;
+    }
+
+    /**
+     * Get copyright
+     *
+     * @return string
+     */
+    public function getCopyright()
+    {
+        return $this->copyright;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param \AppBundle\Entity\Media $logo
+     *
+     * @return Option
+     */
+    public function setLogo(\AppBundle\Entity\Media $logo = null)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return \AppBundle\Entity\Media
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+}

@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- HEADER -->
+    <div id="headerwrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1>Association Aides aux Malades Mentaux Démunis</h1>
+                                
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 himg">
+                    <!-- <img src="{{ asset('images/browser.png') }}" class="img-responsive">  -->
+                </div>
+            </div><!-- /row -->
+        </div> <!-- /container -->
+    </div><!-- /headerwrap -->
+
+
+    <!-- SECTION ABOUT -->
+    <div id="service">
+        <div class="container-fluid">
+            <div class="row">
+              {% for about in abouts %}
+                  <div class="col-md-6 pt-6 about">
+                      <div class="col-md-2">
+                      </div>
+                      <div class="col-md-10 border-left">
+                          <i class="fa fa-heart-o"></i>
+                          <h4>{{ about.title|e }}</h4>
+                          <p>{{ about.content|e }}</p>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                    {% if about.media is not null %}
+                      <img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ about.media.name }}">
+                    {% endif %}
+                  </div> 
+              {% endfor %} 
+            </div>
+        </div><!-- /container -->
+    </div><!-- /service -->
+  
+
+    <!-- SECTION MISSIONS -->
+    <div id="twrap">
+        <div class="container">
+            {% for mission in missions %}
+              <div class="row">
+
+                    <div class="col-md-{% if loop.index is odd %}3{% else %}7{% endif %}"></div>
+                    <div class="col-md-{% if loop.index is odd %}9{% else %}5{% endif %} border-left">
+                        <i class="fa fa-comment-o"></i>
+                        <h4>{{ mission.title|e }}</h4>
+                        <p>{{ mission.content|e }}</p>
+                    </div>
+
+              </div>
+            {% endfor %}
+        </div><!-- /container -->
+    </div><!-- /twrap -->
+
+
+
+    <!-- SECTION ACTION -->
+    <div id="portfoliowrap">
+        <section class="publicaciones-blog-home">
+              <div class="container-fluid">
+                <div class="">
+                  <h2>Nos  <b>Actions</b></h2>
+                  <div class="row-page row">
+                     
+                      
+                    {% for action in actions %}
+                      <div class="col-page col-sm-4 col-md-3">
+                        <a href="{{ path('action_show', { 'link': action.link }) }}" class="fondo-publicacion-home">
+                          <div class="img-publicacion-home">
+                            {% if action.media is not null %}
+                              <img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ action.media.name }}">
+                            {% endif %}
+                          </div>
+                          <div class="contenido-publicacion-home">
+                            <h3>{{ action.title|e }}</h3>
+                            <p>{{ action.body|raw|slice(0, 125) }}</p>
+                          </div>
+                          <div class="mascara-enlace-blog-home">
+                            <span>Lire plus </span>
+                          </div>
+                        </a>
+                      </div>
+                    {% endfor %}
+                        <div class="col-page col-sm-4 col-md-3">
+                          <a href="#" class="todas-las-publicaciones-home">
+                              <span>VOIR NOS AUTRES ACTIONS</span>
+                          </a>
+                        </div>
+
+                  </div>
+                </div>
+              </div>
+        </section>
+    </div><!-- /Portfoliowrap -->
+     
+
+    <!-- TEAM MEMBERS -->
+     <div id="our-team">
+         <div class="container mtb">
+            <div class="row centered">
+                <h2 class="home-h2 mb">Notre <b>Equipe</b></h2>
+                {% for team in teams %}
+                  <div class="col-sm-{% if loop.length > 3 %}3{% else %}4{% endif %} col-xs-12">
+                      <div class="he-wrap tpl6">
+                        {% if team.media is not null %}
+                          <img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ team.media.name }}">
+                        {% endif %}
+                      </div><!-- he wrap -->
+                      <h4>{{team.name}}</h4>
+                      <h5 class="ctitle">{{team.status}}</h5>
+                      <p>{{team.description}}</p>
+                  </div><!-- /col-lg-3 -->         
+                {% endfor %}
+            </div><!-- /row -->
+         </div>
+    </div>   
+
+
+
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 21px; margin-bottom: 1em; }
+    p { margin: 0 0 1em 0; }
+    a { color: #0000F0; }
+    a:hover { text-decoration: none; }
+    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+    #container { padding: 2em; }
+    #welcome, #status { margin-bottom: 2em; }
+    #welcome h1 span { display: block; font-size: 75%; }
+    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+    #icon-book { display: none; }
+
+    @media (min-width: 768px) {
+        #wrapper { width: 80%; margin: 2em auto; }
+        #icon-book { display: inline-block; }
+        #status a, #next a { display: block; }
+
+        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+    }
+    #twrap{
+      background:url({{ asset('images/t-back.jpg') }}) no-repeat center top;
+      background-size: cover;
+    }
+
+    #headerwrap {
+      background-image: url({{ asset('images/header-back.jpeg') }});
+    }
+</style>
+{% endblock %}

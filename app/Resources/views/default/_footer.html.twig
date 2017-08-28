@@ -1,0 +1,91 @@
+<!-- CONTACT FORMS -->
+ <div id="contact">
+     <div class="container-fluid">
+        <div class="row">
+            <h2 class="home-h2 mb">Nous <b>Contacter</b></h2>
+            <div class="col-lg-6">
+              <form id="contactForm" role="form">
+                <div class="form-group">
+                  <input type="text" placeholder="Votre nom" class="form-control" name="name" id="name">
+                </div>
+                <div class="form-group">
+                  <input type="email" placeholder="Adresse email" class="form-control" name="email" id="email">
+                </div>
+                <div class="form-group">
+                  <input type="text" placeholder="Sujet" class="form-control" name="sujet">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="3" placeholder="Message"></textarea>
+                </div>
+                <button type="submit" class="">ENVOYER</button>
+              </form>
+            </div>  
+            <div class="col-lg-6 no-padding">
+                <div class="col-lg-12">
+                    <h4>Autour du Web</h4>
+                    <div class="hline-w"></div>
+                    <ul class="list-inline">
+                        {% if options['facebook'] is defined %}                
+	                        <li>
+	                            <a href="{{ options['facebook'] }}" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+	                        </li>
+                        {% endif %}
+                        {% if options['googlePlus'] is defined %}   
+	                        <li>
+	                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+	                        </li>
+                        {% endif %}
+                        {% if options['twitter'] is defined %}   
+	                        <li>
+	                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+	                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-lg-12 join-us">
+                    <h4>Nous joindre</h4>
+                    <div class="hline-w"></div>
+                    <ul class="">
+                        {% if options['adresse'] is defined %}                
+	                        <li>
+	                            <span class="btn-social btn-outline"><i class="fa fa-home" aria-hidden="true"></i> </span>
+	                            {{ options['adresse'] }}
+	                        </li>
+                        {% endif %}
+                        {% if options['telephone'] is defined %}  
+	                        <li>
+	                            <span class="btn-social btn-outline"><i class="fa fa-phone"></i> </span>
+	                            {{ options['telephone'] }}
+
+	                        </li>
+                        {% endif %}
+                        {% if options['email'] is defined %}  
+	                        <li>
+	                            <span class="btn-social btn-outline"><i class="fa fa-envelope" aria-hidden="true"></i> </span>
+	                            {{ options['email'] }}
+	                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>  
+     
+        </div>
+     </div>     
+ </div>
+
+
+ <!-- *****************************************************************************************************************
+ FOOTER
+ ***************************************************************************************************************** -->
+ <div id="footerwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% if options['copyright'] is defined %}
+                	<h4>{{ options['copyright'] }}</h4>
+                {% endif %}
+            </div>
+        
+        </div>
+    </div>
+ </div>

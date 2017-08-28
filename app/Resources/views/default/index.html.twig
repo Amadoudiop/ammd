@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<!-- basic-slider start -->
+	<div class="slider-section">
+		<div class="slider-active owl-carousel">
+	        {% for slide in slides %}
+	        	{% if slide.media is not null %}
+					<div class="single-slider slider-screen nrbop bg-black-alfa-40" style="background-image: url({{ absolute_url(simple_directory) }}{{ slide.media.name }});">
+						<div class="container">
+							<div class="slider-content text-white">
+								<h2 class="b_faddown1 cd-headline clip is-full-width" >{{ slide.title }}</h2>
+								<p class="b_faddown2">{{ slide.body }}</p>
+		                        {% if slide.link is not null %}
+									<div class="slider_button b_faddown3"><a href="#">En savoir plus</a></div>
+								{% endif %}
+							</div>
+						</div>				
+					</div>
+				{% endif %}
+			{% endfor %}			
+		</div>
+	</div>
+	<!-- basic-slider end -->	
+
+	<!-- Features -->
+	<div id="missions" class="features-wrapper one">
+		<div class="container">
+			<div class="section-name one">
+				<h2>Nos missions</h2>
+				<div class="short-text">
+					<h5>Here is all Reasons to Work With Us</h5>
+				</div>
+			</div>
+			<div class="row features">
+	            {% for mission in missions %}
+					<div class="col-md-4 col-sm-6 ">
+						<div class="feature clearfix">
+							<div class="icon_we"><i class="fa fa-medkit"></i></div>					
+							<h4>{{ mission.title|e }}</h4>
+							<p>{{ mission.content|e }}</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+	<!-- about wrapper -->
+    {% for page in pages %}
+		<div class="special-cause">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-xs-12 donet__area_img no-padding">			
+						{% if page.media is not null %}
+							<img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ page.media.thumb }}" alt="{{ page.media.alt }}">
+						{% endif %}					
+					</div>
+					<div class="col-md-6 col-xs-12 donet__area">			
+						<div class="section-name parallax one">
+							<h1>{{ page.title }}</h1>
+							{{ page.body|raw }}
+						</div>
+						<div class="btns-wrapper">
+							<a href="{{ path('page_show', { 'link': page.link }) }}" class="btn btn-big btn-solid "><i class="fa fa-archive"></i><span>En savoir plus</span></a> <br>
+                            {% if is_granted("ROLE_ADMIN") %}
+								<a href="{{ path('page_edit', { 'link': page.link }) }}" class="btn btn-big btn-solid "><i class="fa fa-archive"></i><span>Modifier</span></a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    {% endfor %}
+
+	
+	<!-- Actions -->
+	<div class="causes-wrapper">
+		<div class="container">
+			<div class="section-name one">
+				<h2>Nos actions récentes</h2>
+				<div class="short-text">
+					<h5>Voic</h5>
+				</div>
+			</div>
+			<div class="causes">
+				<div class="causes-list row">
+                    {% for action in actions %}
+						<div class="cause-wrapper col-md-4 col-xs-12 col-sm-6 legal health">
+							<div class="cause content-box">
+								<div class="img-wrapper">
+									<div class="overlay">
+									</div>
+		                            {% if action.media is not null %}
+		                             	<img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ action.media.thumb }}" alt="{{ action.media.alt }}">
+		                            {% endif %}
+								</div>
+								<div class="info-block">
+									<h4><a href="{{ path('action_show', { 'link': action.link }) }}">{{ action.title|e }}</a></h4>
+									<p>{{ action.body|raw|slice(0, 125) }}</p>
+
+									<div class="donet_btn">
+										<a href="{{ path('action_show', { 'link': action.link }) }}" class="btn btn-min btn-solid"><i class="fa fa-archive"></i><span>Lire plus</span></a>								
+									</div>								
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<a href="{{ path('actions') }}" class="btn btn-min btn-secondary"><span>Voir la liste complète de nos actions</span></a>
+			</div>
+
+		</div>
+	</div>
+	
+
+	<!-- work togather -->
+	<!--
+	<div class="donation-wrapper-home work_togathers ">
+		<div class="parallax-mask"></div>
+		<div class="container">
+			<div class="work_togather">
+				<h2>Give a little &amp; change a lot.</h2>
+				<h1>Let’s Work Togather!!</h1>
+			</div>
+		</div>
+	</div>
+	-->
+	
+	
+	<!-- team -->
+	<div id="team" class="team-wrapper">
+		<div class="container">
+			<div class="section-name one">
+				<h2>Notre équipe</h2>
+				<div class="short-text">
+					<h5>We are all times support them for their smile</h5>
+				</div>
+			</div>	
+			
+			<div class="team-members row">
+			    {% for team in teams %}
+					<div class="col-md-4 col-sm-6 col-xs-12">	
+						<div class="single-member">
+							<div class="best-volunteer">
+								<div class="voluntee-image">
+									<a title="{{team.name}}">
+				                        {% if team.media is not null %}
+				                          <img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ team.media.thumb }}" alt="{{ team.media.alt }}">
+				                        {% endif %}
+                        			</a>
+								</div>
+
+								<span><a href="#" title="">{{team.status}}</a></span>
+								<h2><a href="#" title="{{team.name}}">{{team.name}}</a></h2>
+								<p>{{team.description}}</p>
+							</div>					
+						</div>
+					</div>
+				{% endfor %}
+			</div>	
+		</div>	
+	</div>		
+	
+	
+	<!-- gallery -->
+	<div id="gallery" class="volunteers-wrapper images-gallery-wrapper">
+		<div class="container">
+			<div class="section-name one">
+				<h2>Galerie</h2>
+				<div class="short-text">
+					<h5>boridiatat non proident sunt in culpa qui officia</h5>
+				</div>
+			</div>		
+			<div class="row">
+			    {% for image in images %}
+					<div class="col-sm-4 images-outer ">
+						<div class="images-inner  ">
+							<div class="nivo-activator"></div>
+							<div class="images single-images-gl clearfix">
+								<a href="{{ absolute_url(simple_directory) }}{{ image.name }}" class="nivo-trigger" data-lightbox-gallery="gallery1"><span class="fa fa-arrows-alt"></span><img src="{{ absolute_url(simple_directory) }}{{ image.name }}" alt="{{ image.alt }}"></a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}	
+			</div>
+			<!--
+			<div class="button-center">
+				<a href="{{ path('actions') }}" class="btn btn-min btn-secondary"><span>Voir la galerie complète </span></a>
+			</div>
+			-->
+		</div>
+	</div>
+
+
+
+	<!--
+	<div class="contact-map-area">
+		<div class="map-area" >
+
+			<div id="map"></div>
+
+		</div>
+	</div>	
+	-->
+{% endblock %}

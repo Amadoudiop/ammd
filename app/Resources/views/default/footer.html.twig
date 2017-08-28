@@ -1,0 +1,97 @@
+	<!-- contact wrapper -->
+	<div id="contact" class="contact-page-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="row">
+						{% if options.address is not null %}  
+							<div class="col-sm-4 widget">
+								<h4>Adresse</h4>
+								<i class="fa fa-map-marker"></i>
+								<p>{{ options.address }}</p>
+							</div>
+						{% endif %}
+						{% if options.phone is not null %}  
+							<div class="col-sm-4 widget">
+								<h4>Téléphone</h4>
+								<i class="fa fa-phone"></i>
+	                            <p>{{ options.phone }}</p>
+							</div>
+						{% endif %}
+						{% if options.email is not null %}  
+							<div class="col-sm-4 widget">
+								<h4>E-mail</h4>
+								<i class="fa fa-envelope"></i>
+								<p>{{ options.email }}</p>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="comment-form-wrapper contact-from clearfix">
+						<div class="widget-title ">
+							<h4>Nous contacter</h4>
+							<p>porro sunt dolor quia voluptatem. Dolore harum culpa</p>
+						</div>
+						<form id="contactForm" class="comment-form row altered">
+							<div class="field col-sm-4">
+								<h4>Nom</h4>
+								<input type="text" name="name">
+							</div>
+							<div class="field col-sm-4">
+								<h4>E-mail</h4>
+								<input type="email" name="email">
+							</div>
+							<div class="field col-sm-4">
+								<h4>Sujet</h4>
+								<input type="text" name="sujet">
+							</div>
+							<div class="field col-sm-12">
+								<h4>Message</h4>
+								<textarea name="message"></textarea>
+							</div>
+							<div class="field col-sm-4">
+								<button class="btn btn-big btn-solid"><i class="fa fa-paper-plane"></i><span>Envoyer</span></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Foter -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<div class="about widget clearfix">
+						<div class="logo-wrap">
+                            {% if options.logo is not null %}
+                             	<img class="img-responsive" src="{{ absolute_url(simple_directory) }}{{ options.logo.thumb }}" alt="{{ options.logo.alt }}">
+                            {% endif %}
+						</div>
+						<p>At vero eos et accusamus et iusto odio dignis
+						simos ducimus  qui blanditiis praesentiumlo 
+						volupt </p>
+						<div class="social-media-icons">
+							{% if options.facebook is not null %}  
+								<a href="{{ options.facebook }}" target="blank"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                        	{% endif %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bar">
+			<div class="container">
+                {% if options['copyright'] is defined %}
+                	<h5>{{ options['copyright'] }}</h5>
+                {% endif %}
+			</div>
+		</div>
+	</footer>
