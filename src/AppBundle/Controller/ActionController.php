@@ -197,7 +197,6 @@ class ActionController extends Controller
 
             // $file stores the uploaded PDF file
             $file = $action->getMedia()->getThumb();
-
             if( $file != null )
             {
 
